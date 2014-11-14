@@ -1,0 +1,268 @@
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Desktop Stylsheet
+
+This is the desktop size. It's larger than an iPad so it will only
+be seen on the Desktop.
+
+******************************************************************/
+
+.wrap {
+  max-width: 1080px;
+}
+
+.home-content {
+	width: 30%;
+	float:left;
+	margin-left: 2%;
+	margin-top:1em;
+
+	h3 {
+		line-height: 1.2em;
+	}
+}
+.side-content {
+	width: 66%;
+	float:left;
+	margin-top:1em;
+}
+
+/*********************
+HEADER STYLES
+*********************/
+
+.site-name-desc {
+
+	.site-name {
+		font-size: 2.8em;
+	}
+
+	.site-description {
+		font-size:1.9em;
+	}
+}
+#searchform-head {
+	margin-top:.5em;
+	color:$dark-gray;
+}
+#menu-social-menu {
+		margin-top:0em;
+	}
+
+.menu-toggler {
+	display:none;
+}
+
+.topbar {
+	padding:0;
+	background-color:transparent;
+	position:absolute;
+	top:.25em;
+	right:0;
+	font-size:.8em;
+}
+
+.head-search {
+	button, input[type="text"] {
+		height: 2em;
+	}
+}
+/*********************
+NAVIGATION STYLES
+*********************/
+
+nav {
+	line-height:1em;
+}
+
+.topmenu {
+	@include css-gradient($medium-red,$dark-red);
+	display:block;
+
+	.home & {
+		margin-bottom: 0;
+	}
+}
+
+.home-testimonials { 
+	blockquote {
+		font-size: 2em;
+	}
+}
+
+.menu-item-has-children {
+	& > a:after {
+		padding-left:.5em;
+		content:"\f101";
+		font-family: FontAwesome;
+	}
+
+	.top-nav > &:hover {
+		> a:after {
+			content:"\f103";
+		}
+
+	}
+}
+
+.nav {
+	border: 0;
+	font-size:1em;
+	padding:0;
+	margin:0;
+	
+	&.top-nav {
+		width:100%;
+		padding:0;
+		display: block;
+		line-height: .5em;
+		margin-left:-.75em;
+	}
+
+	/* equally spaces out list items in main menu, see http://css-tricks.com/equidistant-objects-with-css/ */
+	&.top-nav:after {
+		content:'';
+		width:100%;
+		display: inline-block;
+		height:0;
+		line-height: 0;
+		font-size:0;
+	}
+
+	ul {
+		margin-top:0;
+	}
+
+	/* highlight current page */
+	li.current-menu-item,
+	li.current_page_item,
+	li.current-page-ancestor {
+		a {
+			background-color: $dark-red;
+			color:$white;
+		}
+	}  /* end current highlighters */
+
+	li {
+		display: inline-block;
+		position: relative;
+		margin-bottom:-.4em !important;
+
+		a, a:visited {
+			border-bottom: none;
+			padding: 1.25em .75em 1em;
+			color:$white;
+			font-weight:500;
+			font-size: .9em;
+		}
+
+		&:hover, &:focus {
+			background-color:$dark-red;
+			border: transparent;
+			color:$white;
+		}
+
+		ul.sub-menu,
+		ul.children {
+			display: none;
+			background-color: $dark-red;
+			visibility: hidden;
+			padding:0 0 .5em 0;
+			margin: 0;
+			width:auto;
+			border-top: 0;
+			position: absolute;
+			z-index: 8999;
+			text-align:left;
+			box-shadow: .2em .2em .2em rgba(102, 102, 102, .3);
+			font-size:.9em;
+
+
+			li {
+
+				a {
+					padding: .75em .75em .75em 1em;
+					border-right: 0;
+					display: block;
+					width: 180px;
+					margin-bottom: .65em;
+					border-bottom: .1em solid $red;
+					color:$white;
+					line-height: 1.1em;
+				}
+
+				&:last-child {
+					a {
+						border-color:transparent;
+						margin-bottom: 0;	
+					}
+				}
+				ul, ul ul {
+					top:0;
+					left:100%;
+
+					li:last-child {
+						a {
+							margin-bottom:0;
+							border-color: transparent;	
+						}
+						
+					}
+
+					
+				}
+			}
+
+			/* highlight sub-menu current page */
+			li.current-menu-item,
+			li.current_page_item,
+			li.current-page-ancestor {
+				a {
+					color:$white;
+					background-color:$dark-red;
+				}
+			}
+		}
+
+
+		/* showing sub-menus */
+		&:hover > ul {
+			top:98%;
+			left:0;
+			display: block;
+			visibility: visible;
+			@include transition(all .5s ease);
+
+		}
+		
+
+	} /* end .menu ul li */
+
+	& > li:last-of-type:hover > ul {
+			left: auto;
+			right:0;
+		}
+
+	&.social-nav {
+		a {
+			color:$dark-gray;
+		}
+	}
+
+} /* end .nav */
+
+.flexslider.narrow {
+	width:71.4286%;
+	padding-right:2em;
+	float:left;
+}
+
+.sidemain {
+	width: 28.5714%;
+	text-align:left;
+	font-size:1.1em;
+	float:right;
+	padding:0 .25em;
+}

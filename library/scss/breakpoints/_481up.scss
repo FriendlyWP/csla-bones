@@ -1,0 +1,100 @@
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: 481px and Up Stylesheet
+
+This stylesheet is loaded for larger devices. It's set to
+481px because at 480px it would load on a landscaped iPhone.
+This isn't ideal because then you would be loading all those
+extra styles on that same mobile connection.
+
+A word of warning. This size COULD be a larger mobile device,
+so you still want to keep it pretty light and simply expand
+upon your base.scss styles.
+
+******************************************************************/
+
+/*
+IMPORTANT NOTE ABOUT SASS 3.3 & UP
+You can't use @extend within media queries
+anymore, so just be aware that if you drop
+them in here, they won't work.
+*/
+
+#menu-social-menu {
+	display:inline-block;
+}
+
+#logo {
+    border: medium none;
+    display: inline-block;
+    line-height: 0;
+    margin: 0 2% 0 0;
+    max-width: 278px;
+    padding: 1em 0;
+    text-align: left;
+    width: 20%;
+
+	img {
+		border:0;
+		padding:0;
+		margin:0;
+		height: auto;
+		max-width: 100%;
+	}
+
+}
+
+.site-name-desc {
+    display: inline-block;
+    text-align: left;
+    width: 74%;
+}
+
+
+
+.head-search {
+    font-size: 0.9em;
+    max-width: 175px;
+}
+
+/*********************
+POSTS & CONTENT STYLES
+*********************/
+/* at this larger size, we can start to align images */
+.alignleft, img.alignleft {
+	margin-right: 1.5em;
+	display: inline;
+	float: left;
+}
+.alignright, img.alignright {
+	margin-left: 1.5em;
+	display: inline;
+	float: right;
+}
+.aligncenter, img.aligncenter {
+	margin-right: auto;
+	margin-left: auto;
+	display: block;
+	clear: both;
+}
+
+.gallery-item {
+	width:49%;
+
+	&:nth-child(2n+2) {
+		margin-right: 0;
+	}
+}
+
+/*********************
+FOOTER STYLES
+*********************/
+
+.footer-links {
+	ul {
+		li {}
+	}
+} /* end .footer-links */
+

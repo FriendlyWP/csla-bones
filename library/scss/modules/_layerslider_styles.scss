@@ -1,0 +1,278 @@
+/*********************
+COLORS
+Need help w/ choosing your colors? Try this site out:
+http://0to255.com/
+*********************/
+$alert-yellow:      #ebe16f;
+$alert-red:         #fbe3e4;
+$alert-green:       #e6efc2;
+$alert-blue:        #d5edf8;
+
+$black:             #000;
+$white:             #fff;
+
+$light-gray:        #f4f4f4;
+$gray:              #DBDCDC;
+$dark-gray:			#666;
+$text-color:        $black;
+$meta-gray:         #a8a5a5;
+
+$tan:               #DBD6B0;
+$pale-tan:			#F6F4E8;
+
+$green:             #9B9468;
+
+$red:				#B62034;
+$medium-red:		#A70000;
+$dark-red:			#570000;
+
+$bones-pink:        #f01d4f;
+$blue:              #0BA8C1;
+
+$link-color:        $red;
+$link-hover:        darken($link-color, 9%);
+
+$border-color:      #ccc;
+$disabled-gray:     #cfcfcf;
+
+
+/*
+Here's a great tutorial on how to
+use color variables properly:
+http://sachagreif.com/sass-color-variables/
+*/
+
+/*********************
+TYPOGRAPHY
+*********************/
+$sans-serif:        "Open Sans","Helvetica Neue", Helvetica, Arial, sans-serif;
+$serif:             "Georgia", Cambria, Times New Roman, Times, serif;
+$title-family:  "angie-sans","Helvetica Neue", Helvetica, Arial, sans-serif;
+
+/*********************
+BORDER RADIUS
+*********************/
+/*
+I totally rewrote this to be cleaner and easier to use.
+You'll need to be using Sass 3.2+ for these to work.
+Thanks to @anthonyshort for the inspiration on these.
+USAGE: @include border-radius(4px 4px 0 0);
+*/
+
+@mixin border-radius($radius...) {
+	// defining prefixes so we can use them in mixins below
+	$prefixes:      ("-webkit", "-moz", "-ms", "-o",  "");
+  @each $prefix in $prefixes {
+    #{$prefix}-border-radius: $radius;
+  }
+
+  border-radius: $radius;
+}
+
+/*********************
+LAYERSLIDER STYLES
+*********************/
+
+.ls-link:hover {
+	background:transparent;
+}
+
+#layerslider {
+    margin:0 0 1.8% 0;
+    position:relative;
+    font-size:1.1em;
+
+    div {
+	    margin-bottom: 0px;
+	}
+
+	.img {
+	    line-height:0px;
+	    max-width:100%;
+	    margin-bottom:0;
+	     border:0 !important;
+	    padding:0 !important;
+	    margin:0;
+	    box-shadow: none;
+
+	    a.imglink {
+		    line-height:0px;
+		    display:block;
+		    z-index:1;
+		}
+	}
+
+	h3 {
+			font-family:$serif;
+			font-style: italic;
+			font-weight: normal;
+			font-size:1.3em;
+			line-height:1.3em;
+			text-transform:none;
+		}
+
+		p {
+			margin-bottom:.77em;
+		}
+
+		.button {
+			margin-bottom:1em;
+		}
+
+	.bgcolor {
+		display: block;
+		background-color:$white;
+
+		&.taupe {
+			background-color:$tan;
+		}
+	}
+	.overlay {
+		position:absolute;
+		bottom:2em;
+		left:1em;
+		background:rgb(0, 0, 0);
+		background:rgba(0, 0, 0, 0.8);
+		max-width:67%;
+		height:auto;
+
+		h3 {
+			margin-bottom:.375em;
+		}
+		
+		span {
+			display:inline-block;
+			padding:1em 1em 3em 1em;
+		}
+	}
+
+	.ls-bottom-nav-wrapper {
+		z-index: 999;
+	}
+
+	.ls-bottom-slidebuttons {
+	    bottom:3em;
+	    left:2em;
+	    position: absolute;
+	    margin-right:1.5em;
+	    z-index:999;
+	    overflow: visible;
+
+
+	    a {
+	   		display: inline-block;
+	    	line-height:.3em;
+	    	position:relative;
+		    cursor: pointer !important;
+		    color:$white;
+		    background-color:$gray;
+		    margin-right:.5em;
+		    padding:0 .2em;
+		    width:8px;
+		    height:8px;
+		    text-indent:-9999px;
+		    @include border-radius(50%);
+		    border-bottom: 0 !important;
+		    box-shadow: 1px 1px 3px rgba(0,0,0,.5);
+
+		    &:hover {
+		    	color:$blue;
+		    	background-color:$red;
+			}
+
+			&.ls-nav-active, &.active {
+			    color:darken($blue, 25%);
+		    	background-color:$red;
+			}
+			}
+	}
+
+	.ls-nav-start, .ls-nav-stop {
+		display:none;
+		width:10px;
+		height:10px;
+	}
+
+	
+
+	.ls-playvideo {
+		top:45%;
+		left:45%;
+		
+		&:before {
+			font-family:'FontAwesome';
+			content:'\f16a';
+			font-size:4.5em;
+			text-shadow:.1em .1em .1em $dark-gray;
+			color:$white;
+		}
+
+	}
+
+	.ls-vpcontainer {
+		z-index:9999;
+
+		&:hover {
+
+			.ls-playvideo:before {
+				color:$red;
+			}
+		}
+	}
+
+
+}
+.flexslider {
+	margin-bottom:1em;
+	width:100%;
+}
+
+@media screen and (max-width: 950px) {
+.flexslider {
+		font-size:.7em;
+		
+
+		.overlay  {
+			h3 {
+				font-size: 1.6em;
+				margin-bottom:.2em;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 760px) {
+	.flexslider {
+		font-size:.7em;
+
+		.overlay  {
+			h3 {
+				font-size: 1.2em;
+				margin-bottom:.2em;
+			}
+		
+			.button {
+				margin-bottom:0;
+			}
+		}
+
+
+	}
+}
+
+@media screen and (max-width: 480px) {
+.overlay {
+		p {
+			display: none;
+		}
+
+		span {
+			width: 100% !important;
+			padding:.5em !important;
+		}
+	}
+
+	.flex-direction-nav {
+		display: none;
+	}
+}

@@ -1,0 +1,342 @@
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Tablet & Small Desktop Stylesheet
+
+******************************************************************/
+
+/*********************
+LAYOUT & GRID STYLES
+*********************/
+
+.wrap {
+	max-width: 860px;
+}
+
+
+.button.login span {
+    display: inline-block;
+    margin-right: 0.3em;
+}
+
+#logo {
+    border: medium none;
+    display: inline-block;
+    margin: 0 2% 0 0;
+    max-width: 278px;
+    padding: 1em 0;
+    text-align: left;
+    width: 10%;
+}
+
+.site-name-desc {
+	.site-name {
+		font-size: 2.3em;	
+	}
+
+	.site-description {
+	    font-size: 1.3em;
+	}
+
+	span {
+	    display: block;
+	    line-height: 1em;
+	    margin-bottom: 0.25em;
+	    width: 100%;
+	}
+}
+
+#main .fc-header td {
+		display:inline-block;
+
+		&.fc-header-left, &.fc-header-right {
+			width: 25%;
+		}
+
+		&.fc-header-right {
+			text-align: right;
+		}
+
+		&.fc-header-center {
+			width: 48%;
+			text-align:center;
+		}
+}
+/*********************
+PAGE STYLES
+*********************/
+.gallery-item {
+	width:49%;
+
+	&:nth-child(2n+2) {
+		margin-right:2%;
+	}
+	
+	&:last-of-type {
+		margin-right: 0;
+	}
+
+	.gallery-columns-1 & {
+		width:100%;
+		margin-right: 0;
+	}
+
+	.gallery-columns-2 & {
+		width:49%;
+
+		&:nth-child(2n+2) {
+			margin-right: 0;
+		}
+	}
+
+	.gallery-columns-3 & {
+		width:32%;
+
+		&:nth-child(3n+3) {
+			margin-right: 0;
+		}
+	}
+
+	.gallery-columns-4 & {
+		width:23.5%;
+
+		&:nth-child(4n+4) {
+			margin-right: 0;
+		}
+	}
+
+	.gallery-columns-5 & {
+		width:18.4%;
+
+		&:nth-child(5n+5) {
+			margin-right: 0;
+		}
+	}
+
+	.gallery-columns-6 & {
+		width:15%;
+
+		&:nth-child(6n+6) {
+			margin-right: 0;
+		}
+	}
+
+	.gallery-columns-7 & {
+		width:12.57142857%;
+
+		&:nth-child(7n+7) {
+			margin-right: 0;
+		}
+	}
+
+	.gallery-columns-8 & {
+		width:10.75%;
+
+		&:nth-child(8n+8) {
+			margin-right: 0;
+		}
+	}
+
+	.gallery-columns-9 & {
+		width:9.33333333%;
+
+		&:nth-child(9n+9) {
+			margin-right: 0;
+		}
+	}
+}
+
+.searchform {
+	clear:both;
+	input[type="text"] {
+		width: 75%;
+		margin-right:1%;
+		float:left;
+	}
+
+	input[type="submit"] {
+		width:22%;
+		padding:.5em;
+	}
+} 
+
+h1, .h1 {
+	font-size: 2.1em;
+}
+
+h2, .h2 {
+	font-size: 1.75em;
+	font-weight:500;
+}
+
+h3, .h3 {
+	font-size: 1.5em;
+}
+
+h4, .h4 {
+	font-size: 1.35em;
+	font-weight: 500;
+}
+
+h5, .h5 {
+	font-size: 1.2em;
+	
+}
+
+h6 {
+	font-size: 1.1em;
+	font-weight: 500;
+}
+
+
+.page-title, .archive-title, .single-title {
+	font-size:2.3em;
+	font-weight:500;
+}
+
+.entry-title {
+	font-size:2em;
+}
+
+.home-testimonials { 
+	blockquote {
+		font-size: 1.75em;
+	}
+}
+/*********************
+SIDEBARS & ASIDES
+*********************/
+#sidebar1 {
+	border-top:none;
+	border-left:.2em solid $dark-red;
+	padding:0 0 0 1.5em;
+	margin-bottom:1em;
+}
+.subnav, .parent-sidebar-menu {
+	padding-left:0;
+
+	li {
+		list-style-type: none;
+		padding:0;
+		margin:0;	
+	}
+
+	a, a:visited {
+		border: none;
+		color:$text-color;
+	}
+
+	.current_page_item > a {
+		color:$green;
+	}
+
+	li:last-of-type {
+		margin-bottom: 0;
+	}
+
+}
+
+.parent-sidebar-menu {
+	& > .current_page_item > a,
+	& > .current_page_ancestor > a {
+		font-weight:700;
+	}
+
+
+	ul {
+		margin-bottom:0;
+	}
+}
+
+.widget {
+	margin: 0 0 2.2em 0;
+
+	ul {
+		li {
+			margin-bottom: 0.75em;
+
+			ul {
+				margin-top: 0.75em;
+				padding-left: 1em;
+			}
+		}
+	}
+}
+
+/*********************
+FOOTER STYLES
+*********************/
+#inner-footer {
+	.widget {
+		margin-bottom:0;
+	}
+}
+.widget-container {
+	& > div {
+	float:left;
+	margin-right: 3.333%;
+
+		&:last-of-type {
+			margin-right:0;
+		}
+	}
+
+	&.floats_1 {
+		& > div {
+			width:100%;
+		}
+	}
+
+	&.floats_2 {
+		& > div {
+			width:48.3335%;
+		}
+	}
+
+	&.floats_3 {
+		& > div {
+			width:30%;
+		}
+	}
+
+	&.floats_4 {
+		& > div {
+			width:22.5002%;
+		}
+	}
+
+	&.floats_5 {
+		& > div {
+			width:17.3336%;
+		}
+	}
+}
+
+
+/*********************
+GRAVITY FORMS
+**********************/
+
+.ginput_container {
+	margin-bottom:.5em;
+	zoom: 1;
+    &:before, &:after { content: ""; display: table; }
+    &:after { clear: both; }
+
+    & > span {
+    	float:left;
+
+    	&:last-of-type {
+    		margin-right: 0;
+    	}
+
+    	input {
+    		margin-bottom: .2em;
+    	}
+
+    	label {
+    		font-size: .8em;
+    	}
+    }
+}

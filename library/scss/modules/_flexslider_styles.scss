@@ -1,0 +1,412 @@
+/*********************
+COLORS
+Need help w/ choosing your colors? Try this site out:
+http://0to255.com/
+*********************/
+$alert-yellow:      #ebe16f;
+$alert-red:         #fbe3e4;
+$alert-green:       #e6efc2;
+$alert-blue:        #d5edf8;
+
+$black:             #000;
+$white:             #fff;
+
+$light-gray:        #f4f4f4;
+$gray:              #DBDCDC;
+$dark-gray:			#666;
+$text-color:        $black;
+$meta-gray:         #a8a5a5;
+
+$tan:               #DBD6B0;
+$pale-tan:			#F6F4E8;
+
+$green:             #9B9468;
+
+$red:				#B62034;
+$medium-red:		#A70000;
+$dark-red:			#570000;
+
+$bones-pink:        #f01d4f;
+$blue:              #0BA8C1;
+
+$link-color:        $red;
+$link-hover:        darken($link-color, 9%);
+
+$border-color:      #ccc;
+$disabled-gray:     #cfcfcf;
+
+
+/*
+Here's a great tutorial on how to
+use color variables properly:
+http://sachagreif.com/sass-color-variables/
+*/
+
+/*********************
+TYPOGRAPHY
+*********************/
+$sans-serif:        "Open Sans","Helvetica Neue", Helvetica, Arial, sans-serif;
+$serif:             "Georgia", Cambria, Times New Roman, Times, serif;
+$title-family:  "angie-sans","Helvetica Neue", Helvetica, Arial, sans-serif;
+
+/*
+USAGE: @include box-shadow(inset 0 0 4px rgba(0,0,0,0.22));
+*/
+
+@mixin box-shadow($shadow...) {
+	// defining prefixes so we can use them in mixins below
+	$prefixes:      ("-webkit", "-moz", "-ms", "-o",  "");
+  @each $prefix in $prefixes {
+    #{$prefix}-box-shadow: $shadow;
+  }
+
+  box-shadow: $shadow;
+}
+
+/* usage: @include breakpoint(tablet) { // your styles here } */
+ @mixin breakpoint($point) {
+ 	
+  @if $point == tv { // 1300px
+     @media (min-width: 81.25em) { @content ; }
+  }
+   @else if $point == desktop { // 1120px
+     @media (min-width: 70em) { @content ; }
+  }
+   @else if $point == laptop { // 1024px
+     @media (min-width: 64em) { @content ; }
+  }
+    @else if $point == tablet { // 800px
+     @media (min-width: 50em) { @content ; }
+  }
+   @else if $point == phablet { // 600px
+     @media (min-width: 37.5em)  { @content ; }
+  }
+  @else if $point == mobileonly { // 400px
+     @media (max-width: 25em)  { @content ; }
+  }
+  @else if $point == print {
+     @media (print)  { @content ; }
+  }
+}
+
+/*********************
+FLEXSLIDER STYLES
+*********************/
+/* Browser Resets */
+.flex-container a:active,
+.flexslider a:active,
+.flex-container a:focus,
+.flexslider a:focus  {outline: none;}
+.slides,
+.flex-control-nav,
+.flex-direction-nav {margin: 0; padding: 0; list-style: none;} 
+
+/* FlexSlider Necessary Styles
+*********************************/ 
+.flexslider {padding: 0;font-family:$sans-serif;}
+.flexslider .slides > li {display: none; -webkit-backface-visibility: hidden;} /* Hide the slides before the JS is loaded. Avoids image jumping */
+.flexslider .slides img {width: 100%; display: block;}
+.flex-pauseplay span {text-transform: capitalize;}
+
+/* Clearfix for the .slides element */
+.slides:after {content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0;} 
+html[xmlns] .slides {display: block;} 
+* html .slides {height: 1%;}
+
+/* No JavaScript Fallback */
+/* If you are not using another script, such as Modernizr, make sure you
+ * include js that eliminates this class on page load */
+.no-js .slides > li:first-child {display: block;}
+
+/* FlexSlider Default Theme
+*********************************/
+/* .flexslider {margin: 0 0 60px; background: #fff; border: 4px solid #fff; position: relative; -webkit-border-radius: 4px; -moz-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; box-shadow: 0 1px 4px rgba(0,0,0,.2); -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.2); -moz-box-shadow: 0 1px 4px rgba(0,0,0,.2); -o-box-shadow: 0 1px 4px rgba(0,0,0,.2); zoom: 1;} */
+.flex-viewport {max-height: 2000px; -webkit-transition: all 1s ease; -moz-transition: all 1s ease; transition: all 1s ease;}
+.loading .flex-viewport {max-height: 300px;}
+.flexslider .slides {zoom: 1; margin:0;}
+
+.carousel li {margin-right: 5px}
+
+
+/* Direction Nav */
+.flex-direction-nav {
+	*height: 0;
+
+	a {
+		display: block; 
+		color:$green; 
+		position: absolute; 
+		top: 45%; 
+		z-index: 999; 
+		cursor: pointer; 
+		font-family: 'FontAwesome';
+		speak: none;
+		font-weight: normal;
+		font-size:3em;
+		text-decoration: none;
+		text-transform: none;
+		line-height: 1;
+		/* opacity:.8; */
+		-webkit-font-smoothing: antialiased;
+
+		&:hover {
+			color:$link-color;
+			background-color: transparent;
+		}
+
+		&.flex-next {
+			right: .5em; 
+			border: none;
+
+			&:before {
+				font-family: 'FontAwesome';
+				content: "\f0a9";
+			}
+		}
+
+		&.flex-prev {
+			left: .5em;
+			border:none;
+
+			&:before {
+				font-family: 'FontAwesome';
+				content: "\f0a8";
+			}
+		}
+	}
+}
+
+.flexslider:hover .flex-next {opacity: 0.8; }
+.flexslider:hover .flex-prev {opacity: 0.8; }
+.flexslider:hover .flex-next:hover, .flexslider:hover .flex-prev:hover {opacity: 1;}
+.flex-direction-nav .flex-disabled {opacity: .3!important; filter:alpha(opacity=30); cursor: default;}
+
+.flex-control-thumbs {margin: 5px 0 0; position: static; overflow: hidden;}
+.flex-control-thumbs li {width: 25%; float: left; margin: 0;}
+.flex-control-thumbs img {width: 100%; display: block; opacity: .7; cursor: pointer;}
+.flex-control-thumbs img:hover {opacity: 1;}
+.flex-control-thumbs .flex-active {opacity: 1; cursor: default;}
+
+@media screen and (max-width: 860px) {
+  .flex-direction-nav .flex-prev {opacity: 1; left: 0;}
+  .flex-direction-nav .flex-next {opacity: 1; right: 0;}
+}
+
+.ls-link:hover {
+	background:transparent;
+}
+.flexslider, .entry-content .flexslider, #layerslider {
+    position:relative;
+    margin-bottom: 1.677em;
+    background-color:$pale-tan;
+    border-radius:1em;
+
+    @include breakpoint(laptop) { 
+    	margin-bottom: 0;
+    }
+
+    & .slides li {
+	    margin-bottom: 0px;
+	    list-style: none;
+	    position:relative;
+	}
+
+	.img {
+	    line-height:0px;
+	    max-width:100%;
+	    margin-bottom:0;
+	     border:0 !important;
+	    padding:0 !important;
+	    margin:0;
+	    box-shadow: none;
+
+	    a.imglink {
+		    line-height:0px;
+		    display:block;
+		    z-index:1;
+		}
+	}
+
+	img {
+		margin-bottom: 0;
+	}
+
+	.bgcolor {
+		display: block;
+		padding:1em 2em 3em;
+
+		span {
+			display: inline-block;
+			width: 100%;
+			@include breakpoint(phablet) {
+				width: 58%;
+			}
+		}
+
+		img {
+			width: 100%;
+			margin: 0 0 1.67em 0;
+
+			@include breakpoint(phablet) {
+				width:40%;
+				margin:0 0 0 2%;
+				float:right;
+			}
+		}
+
+		h1,h2,h3,h4,h5,h6 {
+			border: none;
+			line-height:1.3em;
+		}
+
+		h1 {
+			color: $red;
+
+			@include breakpoint(phablet) {
+				font-size: 2.1em;
+			}
+
+		}
+
+		h3 {
+			@include breakpoint(phablet) {
+				font-size: 1.8em;
+			}
+		}
+		.button {
+			font-weight: 500;
+		}
+	}
+
+	.overlay {
+		position:absolute;
+		bottom:.25em;
+		right:.25em;
+		background-color:$gray;
+		background:rgb(244, 244, 244);
+		background:rgba(244, 244, 244, 0.86);
+		max-width:37%;
+		border-radius:.5em;
+		@include box-shadow(.2em .2em .2em rgba(0,0,0,0.2));
+
+		&.playing {
+			display:none;
+		}
+
+		h3 {
+			font-family:$title-family;
+			color:$black;
+			font-weight: normal;
+			font-size:1.3em;
+			line-height:1.3em;
+			text-transform:none;
+		}
+
+		p {
+			margin-bottom:.77em;
+		}
+
+		span {
+			display:inline-block;
+			padding:1em 1em 1.5em 1em;
+		}
+	}
+
+	.flex-direction-nav {
+		z-index: 999;
+	}
+
+	.flex-control-nav, .flex-control-paging {
+	    bottom:1em;
+	    right:2em;
+	    position: absolute;
+	    margin-left:1.5em;
+	    z-index:999;
+	    overflow: visible;
+
+	    li {
+		    display: inline-block;
+		    line-height:.3em;
+		    position:relative;
+
+		    a {
+			    cursor: pointer !important;
+			    display:block;
+			    color:$white;
+			    background-color:$gray;
+			    margin-right:.5em;
+			    padding:0 .2em;
+			    width:8px;
+			    height:8px;
+			    text-indent:-9999px;
+			    border-radius:50%;
+			    border-bottom: 0 !important;
+			    box-shadow: 1px 1px 3px rgba(102, 102, 102, .3);
+
+			    &:hover {
+			    	color:$gray;
+			    	background-color:$red;
+				}
+
+				&.flex-active, &.active {
+				    color:darken($gray, 25%);
+			    	background-color:$red;
+				}
+			}
+		}
+	}
+
+}
+.flexslider {
+	width:100%;
+}
+
+@media screen and (max-width: 950px) {
+.flexslider {
+		font-size:.7em;
+		
+
+		.overlay  {
+			h3 {
+				font-size: 1.6em;
+				margin-bottom:.2em;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 760px) {
+	.flexslider {
+		font-size:.7em;
+
+		.overlay  {
+			h3 {
+				font-size: 1.2em;
+				margin-bottom:.2em;
+			}
+		
+			.button {
+				margin-bottom:0;
+			}
+		}
+
+
+	}
+}
+
+@media screen and (max-width: 480px) {
+.overlay {
+		p {
+			display: none;
+		}
+
+		span {
+			width: 100% !important;
+			padding:.5em !important;
+		}
+	}
+
+	.flex-direction-nav {
+		display: none;
+	}
+}
