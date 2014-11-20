@@ -85,12 +85,12 @@
 					<form role="search" class="search" method="get" id="searchform-head" action="<?php echo home_url( '/' ); ?>">
 					    <div class="head-search">
 					    	<label class="screen-reader-text" for="s">Search this site</label>
-					        <input type="text" value="" placeholder="Search" name="s" id="s" />
+					        <input type="text" value="" placeholder="Search Archives" name="s" id="s" />
 					        <button type="submit" id="searchsubmit-head" value="Search"  /><i class="fa fa-search"></i></button>
 					    </div>
 					</form>
 					
-					<a class="button login" href="https://www.z2systems.com/np/clients/csla/login.jsp" target="_blank"><span>Member </span>Login</a>
+					<a class="button login" href="http://csla.net" target="_blank"><span>Main </span>CSLA.net Site</a>
 					
 					<?php if ( has_nav_menu( 'social-nav' ) ) { ?>
 							<?php wp_nav_menu(array(

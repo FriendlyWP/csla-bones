@@ -758,15 +758,18 @@ td, th {
 		padding: 7px;
 		border-right: 1px solid $gray;
 
+
 		&:last-child {
 			border-right: 0;
 		}
 	}
 
 	th {
+
 		background-color: $light-gray;
 		border-bottom: 1px solid $gray;
 		border-right: 1px solid $gray;
+
 
 		&:last-child {
 			border-right: 0;

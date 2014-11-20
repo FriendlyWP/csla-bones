@@ -29,11 +29,12 @@
 
                 	<?php // IMAGE
                 	if ( function_exists('get_field') && get_field('photo')) {
+
                 		$image = get_field('photo');
                 		$size = 'thumbnail';
                 		$attr = array('class'=>"alignleft",);
-                		//echo '<img src="' . $image['url'] . '" />';
-                		echo wp_get_attachment_image( $image, $size, false, $attr );
+                		$large_image_url = wp_get_attachment_image_src( $image, 'large' );
+                		echo '<a rel="lightbox" href="' . $large_image_url[0] . '">' . wp_get_attachment_image( $image, $size, false, $attr ) . '</a>';
                 		
                 	}  ?>
 

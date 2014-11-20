@@ -41,9 +41,13 @@
 			<header class="article-header">
 
 	                  <h1 class="page-title" itemprop="headline"><?php 
-							    	$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); 
-							    	$title = $term->name; ?>
-							    	    		<?php echo $title; ?></h1>
+				    	$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); 
+				    	$title = $term->name; 
+				    	if (function_exists('get_field') && get_field('full_name', $term->taxonomy . '_' . $term->term_id )) {
+				       		echo get_field('full_name', $term->taxonomy . '_' . $term->term_id );
+				        } else { 
+				        	echo $title; 
+				        } ?></h1>
 
 	        </header> <?php // end article header ?>
 
@@ -70,7 +74,7 @@
 
 					<?php if ('division_info' !== $current_tax) { ?>
 						<span id="filter<?php echo $count; $count++; ?>">
-            				<span>Divsion</span>
+            				<span>Division</span>
             			</span>
             		<?php } ?>
 
