@@ -64,6 +64,16 @@ LAYOUT & GRID STYLES
 .mm-list > li > a {
 	border: none;
 }
+
+.datatable {
+	a, a:visited {
+		border: none;
+	}
+}
+
+.DTTT_container {
+	margin-left:.5em;
+}
 /*********************
 LINK STYLES
 *********************/
@@ -1145,7 +1155,9 @@ FOOTER STYLES
 }
 
 .filters {
+	font-size:.9em;
 	clear:both;
+	
 	& > span {
 		display: inline-block;
 		margin-right:.5em;

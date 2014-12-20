@@ -112,7 +112,7 @@
 					</div> <!-- .topbar -->
 					
 					<?php if (!wp_is_mobile()) { ?> 
-					<a href="<?php echo home_url(); ?>" id="logo" rel="nofollow" alt="<?php bloginfo('name'); ?>" /><img src="<?php echo get_template_directory_uri(); ?>/library/images/csla-logo-only-sm.png" alt="<?php bloginfo('name'); ?>" /></a>
+					<a href="<?php echo home_url(); ?>" id="logo" rel="nofollow" alt="<?php bloginfo('name'); ?>" /><img src="<?php echo get_template_directory_uri(); ?>/library/images/logo-centennial.png" alt="<?php bloginfo('name'); ?>" /></a>
 					<?php } ?>
 
 					<div class="site-name-desc"><a href="<?php echo home_url(); ?>" rel="nofollow" alt="<?php bloginfo('name'); ?>"><span class="site-name">California School Library Association</span>

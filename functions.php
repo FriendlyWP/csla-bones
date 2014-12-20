@@ -318,145 +318,7 @@ function emailbot_ssc($atts, $content = null) {
     return $email;
 }
 
-// ACF CUSTOM FIELDS
-if( function_exists('register_field_group') ):
 
-register_field_group(array (
-  'key' => 'group_53d28bdec8a71',
-  'title' => 'Listings',
-  'fields' => array (
-    array (
-      'key' => 'field_53d2b223201e5',
-      'label' => 'Listing Section',
-      'name' => 'listing_section',
-      'prefix' => '',
-      'type' => 'repeater',
-      'instructions' => '',
-      'required' => 0,
-      'conditional_logic' => 0,
-      'min' => '',
-      'max' => '',
-      'layout' => 'row',
-      'button_label' => 'Add A Listing Section',
-      'sub_fields' => array (
-        array (
-          'key' => 'field_53d2951333088',
-          'label' => 'Listing Title',
-          'name' => 'listing_title',
-          'prefix' => '',
-          'type' => 'text',
-          'instructions' => 'Not required; this will insert a sub-title above this group of contacts.',
-          'required' => 0,
-          'conditional_logic' => 0,
-          'default_value' => '',
-          'placeholder' => '',
-          'prepend' => '',
-          'append' => '',
-          'maxlength' => '',
-          'readonly' => 0,
-          'disabled' => 0,
-        ),
-        array (
-          'key' => 'field_53d2953633089',
-          'label' => 'Listings',
-          'name' => 'listings',
-          'prefix' => '',
-          'type' => 'repeater',
-          'instructions' => '',
-          'required' => 0,
-          'conditional_logic' => 0,
-          'min' => '',
-          'max' => '',
-          'layout' => 'row',
-          'button_label' => 'Add Another Person',
-          'sub_fields' => array (
-            array (
-              'key' => 'field_53d298282272e',
-              'label' => 'Image',
-              'name' => 'image',
-              'prefix' => '',
-              'type' => 'image',
-              'instructions' => 'Don\'t worry about resizing the image, we will use the thumbnail version on the page. Upload the largest version you have.',
-              'required' => 0,
-              'conditional_logic' => 0,
-              'column_width' => '',
-              'return_format' => 'array',
-              'preview_size' => 'thumbnail',
-              'library' => 'all',
-            ),
-            array (
-              'key' => 'field_53d295ab3308a',
-              'label' => 'Name',
-              'name' => 'name',
-              'prefix' => '',
-              'type' => 'text',
-              'instructions' => '',
-              'required' => 1,
-              'conditional_logic' => 0,
-              'column_width' => '',
-              'default_value' => '',
-              'placeholder' => '',
-              'prepend' => '',
-              'append' => '',
-              'maxlength' => '',
-              'readonly' => 0,
-              'disabled' => 0,
-            ),
-            array (
-              'key' => 'field_53d295c33308b',
-              'label' => 'CSLA Position / Title',
-              'name' => 'csla_title',
-              'prefix' => '',
-              'type' => 'text',
-              'instructions' => 'For instance, President or President-Elect.',
-              'required' => 0,
-              'conditional_logic' => 0,
-              'column_width' => '',
-              'default_value' => '',
-              'placeholder' => '',
-              'prepend' => '',
-              'append' => '',
-              'maxlength' => '',
-              'readonly' => 0,
-              'disabled' => 0,
-            ),
-            array (
-              'key' => 'field_53d2962a3308d',
-              'label' => 'Employment Info',
-              'name' => 'employment_info',
-              'prefix' => '',
-              'type' => 'wysiwyg',
-              'instructions' => 'Job title, Employer Name, Address, and Contact phone/email.',
-              'required' => 0,
-              'conditional_logic' => 0,
-              'column_width' => '',
-              'default_value' => '',
-              'toolbar' => 'full',
-              'media_upload' => 0,
-            ),
-          ),
-        ),
-      ),
-    ),
-  ),
-  'location' => array (
-    array (
-      array (
-        'param' => 'page_template',
-        'operator' => '==',
-        'value' => 'tmpl-listings.php',
-      ),
-    ),
-  ),
-  'menu_order' => 0,
-  'position' => 'normal',
-  'style' => 'seamless',
-  'label_placement' => 'top',
-  'instruction_placement' => 'label',
-  'hide_on_screen' => '',
-));
-
-endif;
 
 // custom filter to replace '=' with 'LIKE'
 add_filter('posts_where', 'my_posts_where');
@@ -466,3 +328,15 @@ function my_posts_where( $where )
  
   return $where;
 }
+
+function my_post_queries( $query ) {
+  // not an admin page and it is the main query
+  if (!is_admin() && $query->is_main_query()){
+
+    if(is_tax()){
+      // show 50 posts on custom taxonomy pages
+      $query->set('posts_per_page', 500);
+    }
+  }
+}
+add_action( 'pre_get_posts', 'my_post_queries' );

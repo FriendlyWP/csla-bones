@@ -129,9 +129,16 @@ function bones_scripts_and_styles() {
 		// register datatables script
 		wp_register_script( 'datatables-yadcf', get_stylesheet_directory_uri() . '/library/js/yadcf-master/jquery.dataTables.yadcf.js', array('datatables-script'), true );
 
+		wp_register_style( 'datatables-tabletools-styles', '//cdn.datatables.net/tabletools/2.2.0/css/dataTables.tableTools.min.css', array(), '', 'all' );
+		wp_register_script( 'datatables-tabletools-script', '//cdn.datatables.net/tabletools/2.2.0/js/dataTables.tableTools.min.js', array('datatables-script'), true );
+		//wp_register_script( 'datatables-tabletools-swf', '//cdn.datatables.net/tabletools/2.2.0/swf/copy_csv_xls_pdf.swf', array('datatables-script'), true );
+		
 		wp_enqueue_style('datatables-stylesheet');
 		wp_enqueue_script('datatables-yadcf');
 		wp_enqueue_script('datatables-script');
+		wp_enqueue_style('datatables-tabletools-styles');
+		wp_enqueue_script('datatables-tabletools-script');
+		//wp_enqueue_script('datatables-tabletools-swf');
 
 		if (wp_is_mobile()) {
 

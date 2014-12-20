@@ -43,7 +43,7 @@
                 		<tr>
                 			<th>Position</th>
                 			<th>Association</th>
-                			<th>Divsion</th>
+                			<th>Division</th>
                 			<th>Group</th>
                 			<th>Years Served</th>
                 		</tr>

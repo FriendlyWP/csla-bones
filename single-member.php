@@ -2,9 +2,44 @@
 
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
-		/* Initialise the DataTable */
-		$('#participation_table').DataTable();
-	} );
+		var oTable,
+		//var myTable = $('#participation_table').DataTable({
+		  oTable = $('#participation_table').DataTable({
+		  	"responsive": true,
+		  	"order": [[ 4, "asc" ]],
+		  	 "pageLength": 25,
+		  	"lengthMenu": [[10, 25, 50, 100, 200, -1], [10, 25, 50, 100, 200, "All"]],
+	         columnDefs: [ {
+	            	targets: [ 4 ],
+	            	orderData: [ 4, 5 ]
+		        }, 
+		        {
+		            targets: [ 5 ],
+		            orderData: [ 5, 4 ]
+	        	},
+	        	{
+	                "targets": [ 6 ],
+	                "visible": false,
+            	},
+            ],
+             "dom": 'T<"clear">lfrtip',
+            tableTools: {
+	            "sSwfPath": "/wp-content/themes/csla-bones/library/js/copy_csv_xls_pdf.swf",
+	        },
+
+		});
+
+		 yadcf.init(oTable, [
+		    {column_number : 0, filter_container_id: "filter0", column_data_type: "html", html_data_type: "text", filter_match_mode: "exact", filter_default_label: "Select"},
+		    {column_number : 1, filter_container_id: "filter1", column_data_type: "html", html_data_type: "text", filter_match_mode: "exact", filter_default_label: "Select"},
+		    {column_number : 2, filter_container_id: "filter2", column_data_type: "html", html_data_type: "text", filter_match_mode: "exact", filter_default_label: "Select"},
+		    {column_number : 3, filter_container_id: "filter3", column_data_type: "html", html_data_type: "text", filter_match_mode: "exact", filter_default_label: "Select"},
+		    {column_number : 4, filter_container_id: "filter4", sort_as: "num", filter_default_label: "Select"},
+		    {column_number : 5, filter_container_id: "filter5", sort_as: "num", filter_default_label: "Select"},		    
+		    {column_number : 6, filter_container_id: "filter6", column_data_type: "text",  text_data_delimiter: ",", sort_as: "alpha", filter_default_label: "School Year"},	
+		    ]);
+
+		});
 </script>
 
 <div id="content">
@@ -49,12 +84,45 @@
                     	//var_dump(get_field('position'));
                     	?>
                     <h3 style="clear:both;">Participation History</h3>
+                    <div class="filters">
+					
+					<h3>Filter by:</h3>
+					
+						<span id="filter0">
+            				<span>Position</span>
+            			</span>
+            		
+						<span id="filter1">
+            				<span>Association</span>
+            			</span>
+					
+						<span id="filter2">
+	            			<span>Division</span>
+	            		</span>
+	            		
+						<span id="filter3">
+	            			<span>Group</span>
+	            		</span>
+
+						<span id="filter4">
+	            			<span>Start</span>
+	            		</span>
+
+	            		<span id="filter5">
+	            			<span>End</span>
+	            		</span>
+
+	            		<span id="filter6">
+	            			<span>School Year</span>
+	            		</span>
+
+					</div>
                 	<table id="participation_table">
                 		<thead>
                 		<tr>
                 			<th>Position</th>
                 			<th>Association</th>
-                			<th>Divsion</th>
+                			<th>Division</th>
                 			<th>Group</th>
                 			<th>Start</th>
                 			<th>End</th>
@@ -78,20 +146,13 @@
 						
 						<?php while ( $position_query->have_posts() ) : $position_query->the_post(); 
 						
-                    		
-								
-
-								echo "<tr>\n";
-								
-								
+								echo "<tr>\n";		
 									// POSITION INFO
 			    			$terms = get_the_terms( $position_query->ID, 'position' );
 							if ( $terms && ! is_wp_error( $terms ) ) {
 							$terms = array_values($terms); ?>
 							<td>
-								<a href="<?php echo get_permalink( $position_query->ID ); ?>">
-									<?php echo $terms[0]->name; ?>
-								</a>
+								<a href="<?php echo get_term_link($terms[0]->term_id, 'position'); ?>"><?php echo $terms[0]->name; ?></a>
 							</td>
 						<?php
 						}
@@ -103,9 +164,7 @@
 							$terms = array_values($terms); 
 							?>
 								<td>
-									<a href="<?php echo get_term_link($terms[0]->term_id, 'association_info'); ?>">
-										<?php echo $terms[0]->name; ?>
-									</a>
+									<a href="<?php echo get_term_link($terms[0]->term_id, 'association_info'); ?>"><?php echo $terms[0]->name; ?></a>
 								</td>
 						<?php }
 						
@@ -116,9 +175,7 @@
 						if ( $terms && ! is_wp_error( $terms ) ) {
 						$terms = array_values($terms); ?>
 							<td>
-								<a href="<?php echo get_term_link($terms[0]->term_id, 'division_info'); ?>">
-									<?php echo $terms[0]->name; ?>
-								</a>
+								<a href="<?php echo get_term_link($terms[0]->term_id, 'division_info'); ?>"><?php echo $terms[0]->name; ?></a>
 							</td>
 						<?php }
 						
@@ -129,22 +186,26 @@
 						if ( $terms && ! is_wp_error( $terms ) ) {
 						$terms = array_values($terms); ?>
 							<td>
-								<a href="<?php echo get_term_link($terms[0]->term_id, 'group_info'); ?>">
-									<?php echo $terms[0]->name; ?>
-								</a>
+								<a href="<?php echo get_term_link($terms[0]->term_id, 'group_info'); ?>"><?php echo $terms[0]->name; ?></a>
 							</td>
 						<?php }
 							$start_date = get_sub_field('start_date');
 							 	$end_date = get_sub_field('end_date');
 							 	$start_date = date('Y', strtotime($start_date));
 							 	$end_date = date('Y', strtotime($end_date));
+							 	$duration = '';
+								$school_year = '';
+								for ( $i = $start_date; $i < $end_date; $i++  ) {
+									$duration .= '12/' . $i . ',';
+									$year2 = $i + 1;
+									$school_year .= $i . '-' . $year2 . ',';
+									$output = rtrim($school_year, ',');
+								}
+
 								?>
-								<td class="start-date">
-									<?php echo $start_date; ?>
-								</td>
-								<td  class="end-date">
-									<?php echo $end_date; ?>
-								</td>
+								<td class="start-date"><?php echo $start_date; ?></td>
+								<td  class="end-date"><?php echo $end_date; ?></td>
+								<td class="duration"><?php echo $output; ?></td>
 							<?php 
 
 							echo "</tr>\n";
