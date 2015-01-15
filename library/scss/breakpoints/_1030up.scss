@@ -145,6 +145,18 @@ nav {
 		}
 	}  /* end current highlighters */
 
+	li.menu-home {
+		a, a:visited {
+			padding-left:1em;
+
+			&:before {
+				content: '\f015';
+				padding:0 .5em 0 0;
+				font-family: 'FontAwesome';
+			}
+		}
+	}
+
 	li {
 		display: inline-block;
 		position: relative;

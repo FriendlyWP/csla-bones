@@ -17,7 +17,14 @@ LAYOUT & GRID STYLES
 
 .button.login span {
     display: inline-block;
-    margin-right: 0.3em;
+    padding-left:.5em;
+    margin-right:.35em;
+
+    &:before {
+    	content: '\f0e2';
+    	font-family: 'FontAwesome';
+    	padding-right:.5em;
+    }
 }
 
 #logo {
@@ -27,7 +34,7 @@ LAYOUT & GRID STYLES
     max-width: 278px;
     padding: 1em 0;
     text-align: left;
-    width: 10%;
+    width: 20%;
 }
 
 .site-name-desc {
@@ -158,6 +165,7 @@ PAGE STYLES
 	input[type="submit"] {
 		width:22%;
 		padding:.5em;
+		height:40px;
 	}
 } 
 

@@ -353,6 +353,8 @@ HEADER STYLES
 
 .topbar .button {
 	margin-right:.677em;
+	padding:.75em;
+	font-size: 1.1em;
 }
 
 .head-search {
@@ -385,6 +387,10 @@ HEADER STYLES
 	}
 }
 
+.search-in-page {
+	clear:both;
+	margin-bottom:1.5em;
+}
 
 /*********************
 NAVIGATION STYLES
@@ -507,6 +513,10 @@ blockquote.easy_testimonial p {
     width: 100%;
 }
 
+.home .article-header {
+	margin-top:19px;
+}
+
 #breadcrumbs {
 	font-size:.8em;
 	margin-bottom:1em;
@@ -514,6 +524,10 @@ blockquote.easy_testimonial p {
 	a, a:visited, a:hover {
 		color:$green;
 		border: none;
+	}
+
+	body.home & {
+		display: none;
 	}
 }
 

@@ -4,21 +4,22 @@
 
 				<div id="inner-content" class="wrap cf">
 
-					<div id="main" class="m-all t-2of3 d-5of7 cf" role="main">
+						<div id="main" class="m-all t-2of3 d-5of7 cf" role="main">
 
 						<article id="post-not-found" class="hentry cf">
+								<?php if ( function_exists('yoast_breadcrumb') ) {
+									yoast_breadcrumb('<p id="breadcrumbs">','</p>');
+								} ?>
 
 							<header class="article-header">
 
-								<h1><?php _e( 'We\'re sorry, that can\'t be found.', 'bonestheme' ); ?></h1>
+								<h1><?php _e( 'Oh No!', 'bonestheme' ); ?></h1>
 
 							</header>
 
 							<section class="entry-content">
 
-								<p><?php _e( 'Please try searching the site or peruse the following sitemap:', 'bonestheme' ); ?></p>
-
-								
+								<p><?php _e( 'The content you were looking for was not found. Maybe try looking again:', 'bonestheme' ); ?></p>
 
 							</section>
 
@@ -26,21 +27,18 @@
 
 									<p><?php get_search_form(); ?></p>
 
-									<?php if ( shortcode_exists( 'list-pages' ) ) { 
-									echo do_shortcode('[list-pages sort_column="post_title"]'); 
-								} ?>
+									<h1>Site Map</h1>
+
+									<?php get_template_part('content','sitemap'); ?>
 
 							</section>
 
-							<footer class="article-footer">
-
-									<!-- <p><?php _e( 'This is the 404.php template.', 'bonestheme' ); ?></p> -->
-
-							</footer>
-
+							
 						</article>
 
 					</div>
+
+						<?php get_sidebar(); ?>
 
 				</div>
 

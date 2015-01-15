@@ -82,13 +82,13 @@
 					<a href="#my-menu" class="menu-toggler"><i class="fa fa-bars"></i></a>
 
 				
-					<form role="search" class="search" method="get" id="searchform-head" action="<?php echo home_url( '/' ); ?>">
+					<!--<form role="search" class="search" method="get" id="searchform-head" action="<?php echo home_url( '/' ); ?>">
 					    <div class="head-search">
 					    	<label class="screen-reader-text" for="s">Search this site</label>
 					        <input type="text" value="" placeholder="Search Archives" name="s" id="s" />
 					        <button type="submit" id="searchsubmit-head" value="Search"  /><i class="fa fa-search"></i></button>
 					    </div>
-					</form>
+					</form> -->
 					
 					<a class="button login" href="http://csla.net" target="_blank"><span>Main </span>CSLA.net Site</a>
 					
@@ -112,10 +112,10 @@
 					</div> <!-- .topbar -->
 					
 					<?php if (!wp_is_mobile()) { ?> 
-					<a href="<?php echo home_url(); ?>" id="logo" rel="nofollow" alt="<?php bloginfo('name'); ?>" /><img src="<?php echo get_template_directory_uri(); ?>/library/images/logo-centennial.png" alt="<?php bloginfo('name'); ?>" /></a>
+					<a href="<?php echo home_url(); ?>" id="logo" rel="nofollow" alt="<?php bloginfo('name'); ?>" /><img src="<?php echo get_template_directory_uri(); ?>/library/images/logo-centennial-cropped.png" alt="<?php bloginfo('name'); ?>" /></a>
 					<?php } ?>
 
-					<div class="site-name-desc"><a href="<?php echo home_url(); ?>" rel="nofollow" alt="<?php bloginfo('name'); ?>"><span class="site-name">California School Library Association</span>
+					<div class="site-name-desc"><a href="<?php echo home_url(); ?>" rel="nofollow" alt="<?php bloginfo('name'); ?>"><span class="site-name"><?php bloginfo('name'); ?></span>
 
 					<?php $desc = get_bloginfo('description'); 
 					if ($desc) { ?>
