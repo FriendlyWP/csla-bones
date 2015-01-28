@@ -10,6 +10,8 @@
 								} ?>
 						<h1 class="archive-title"><span><?php _e( 'Search Results for:', 'bonestheme' ); ?></span> <?php echo esc_attr(get_search_query()); ?></h1>
 
+						
+
 						<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 							<article id="post-<?php the_ID(); ?>" <?php post_class('cf'); ?> role="article">
@@ -29,7 +31,7 @@
 							</article>
 
 						<?php endwhile; ?>
-
+						<p><?php get_search_form(); ?></p>
 								<?php bones_page_navi(); ?>
 
 							<?php else : ?>

@@ -201,6 +201,8 @@ h6 {
 }
 
 .widget {
+	clear:both;
+
 	.eo-agenda-widget ul.dates,
 	.eo-agenda-widget li.date {
 		border:none;
@@ -252,6 +254,11 @@ h6 {
 		padding: .5em;
 		border-radius:.3em;
 		font-size: 1.25em;
+
+		a, a:visited {
+			border: none;
+			color: $black;
+		}
 	}
 }
 
@@ -1038,6 +1045,11 @@ SIDEBARS & ASIDES
 	color:$dark-red;
 	font-size: 1.5em;
 	line-height:1.1em;
+
+	a, a:visited {
+		border: none;
+		color: $dark-red;
+	}
 }
 .widget {
 	ul, ol {
@@ -1171,6 +1183,10 @@ FOOTER STYLES
 .filters {
 	font-size:.9em;
 	clear:both;
+
+	.single-member & {
+		 display: none; 
+	}
 	
 	& > span {
 		display: inline-block;

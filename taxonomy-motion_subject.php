@@ -9,9 +9,6 @@
 		  	"responsive": true,
 		  	"order": [[ 4, "desc" ]],
 		  	 "pageLength": 25,
-		  	 "language": {
-	            "search": "Search within table:",
-	        },
 		  	"lengthMenu": [[10, 25, 50, 100, 200, -1], [10, 25, 50, 100, 200, "All"]],
 	         columnDefs: [ {
 	            	targets: [ 4 ],
@@ -62,7 +59,7 @@
 				    	if (function_exists('get_field') && get_field('full_name', $term->taxonomy . '_' . $term->term_id )) {
 				       		echo get_field('full_name', $term->taxonomy . '_' . $term->term_id );
 				        } else { 
-				        	echo $title; 
+				        	echo 'Motions: ' . $title; 
 				        } ?></h1>
 
 	        </header> <?php // end article header ?>

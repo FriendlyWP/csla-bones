@@ -121,11 +121,13 @@ textarea, .gform_wrapper textarea {
 
   ul {
     margin:0;
+    padding:0;
     list-style: none;
   }
 
   li {
-    margin-bottom:.5em;
+    margin:0 0 .5em 0;
+    padding:0;
   }
 
   select {
@@ -136,6 +138,7 @@ textarea, .gform_wrapper textarea {
   }
 
   .gfield_label {
+    font-family: $title-family;
     font-weight: 400;
   }
 
@@ -143,16 +146,15 @@ textarea, .gform_wrapper textarea {
     zoom: 1;
     &:before, &:after { content: ""; display: table; }
     &:after { clear: both; }
-  }
 
-  .ginput_left, .ginput_right {
-    width:49%;
-    float:left;
-    margin-right: 2%;
-  }
-
-  .ginput_right {
-    margin-right: 0;
+    .ginput_left, .ginput_right {
+      width:49%;
+      float:left;
+      margin-right: 2%;
+    }
+     .ginput_right {
+      margin-right: 0;
+    }
   }
 } 
 

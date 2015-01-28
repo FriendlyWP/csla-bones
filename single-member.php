@@ -8,6 +8,9 @@
 		  	"responsive": true,
 		  	"order": [[ 4, "asc" ]],
 		  	 "pageLength": 25,
+		  	 "language": {
+	            "search": "Search within table:",
+	        },
 		  	"lengthMenu": [[10, 25, 50, 100, 200, -1], [10, 25, 50, 100, 200, "All"]],
 	         columnDefs: [ {
 	            	targets: [ 4 ],
